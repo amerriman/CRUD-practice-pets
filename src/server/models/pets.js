@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+// var config = require ('../_config.js');
+
+
 var Pet = new Schema({
   name: String,
   type: String,
