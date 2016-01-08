@@ -1,0 +1,23 @@
+<div class="bs-example" data-example-id="striped-table">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Pet Name</th>
+        <th>Pet Type</th>
+        <th>Pet Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="pet in pets">
+          <td>{{pet.name}}</td>
+          <td>{{pet.type}}</td>
+          <td>{{pet.age}}</td>
+          <td class="text-right">
+          <!-- add ngclicks to the buttons, have to pass through beer.id to have the right info for the put request -->
+            <button class="btn btn-primary" ng-click="editBeer(beer._id)"><span class="glyphicon glyphicon-pencil"></span></button>
+             <button class="btn btn-danger" ng-click="deleteBeer(beer._id)"><span class="glyphicon glyphicon-trash"></span></button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
