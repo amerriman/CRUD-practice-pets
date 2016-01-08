@@ -43,13 +43,34 @@ describe('Pet', function(){
         .end(function(err, res){
           res.should.have.status(200);
           res.should.be.json;
-          console.log(res.body);
+          console.log(res, "RES");
           res.body.should.be.a('array');
           res.body.length.should.equal(2);
           res.body[0].should.have.property('name');
           res.body[0].should.have.property('age');
           res.body[0].name.should.equal('Fido');
           res.body[1].type.should.equal('Cat');
+          done();
+        });
+    });
+  });
+
+  it('it should list a single pet on GET', function(done){
+    var anotherPet = new Pet({
+      name: 'Alice',
+      type: 'Cat',
+      age: 6
+    });
+    anotherPet.save(function(err, data){
+      chai.request(server)
+        .get('/api/pet/' + data.id)
+        .end(function(err, res){
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.be.a('object');
+          res.body.should.have.property('name');
+          res.body.should.have.property('age');
+          res.body.name.should.equal('Alice')
           done();
         });
     });
