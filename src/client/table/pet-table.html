@@ -7,22 +7,33 @@
         <th>Pet Age</th>
       </tr>
     </thead>
-    <tbody ng-repeat="pet in pets">
-      <tr>
+    <tbody >
+      <tr ng-repeat="pet in pets">
           <td>{{pet.name}}
             <form ng-model="editPet" class="form-inline repeat-animation hide-fade" ng-show="editForm" name="form">
               <div class="form-group">
-                  <!-- <label for="classText">Class</label> -->
-                  <input name="petName" ng-model="petName" type="text" class="form-control input-sm" placeholder={{pet.name}}>
-                  <input name="petType" ng-model="petType" type="text" class="form-control input-sm" placeholder={{pet.type}}>
-                  <input name="petAge" ng-model="petAge" type="text" class="form-control input-sm" placeholder={{pet.age}}>
+                  <input name="petName" ng-model="pet.name" type="text" class="form-control input-sm" >
               </div>
-              <button ng-click="editPet(petName, petType, petAge, pet._id); editForm = ! editForm" type="submit" class="btn btn-default btn-sm btn-edit">Save</button>
             </form>
           </td>
-          <td>{{pet.type}}</td>
-          <td>{{pet.age}}</td>
+          <td>{{pet.type}}
+            <form ng-model="editPet" class="form-inline repeat-animation hide-fade" ng-show="editForm" name="form">
+              <div class="form-group">
+                  <input name="petType" ng-model="pet.type" type="text" class="form-control input-sm">
+              </div>
+            </form>
+          </td>
+          <td>{{pet.age}}
+            <form ng-model="editPet" class="form-inline repeat-animation hide-fade" ng-show="editForm" name="form">
+              <div class="form-group">
+                  <input name="petAge" ng-model="pet.age" type="text" class="form-control input-sm">
+                  <button ng-click="editPet(pet.name, pet.type, pet.age, pet._id); editForm = ! editForm" type="submit" class="btn btn-default btn-sm btn-edit">Save</button>
+                  <button ng-click="editForm = ! editForm" type="button" class="btn btn-default btn-sm btn-cancel">Cancel</button>
+              </div>
+            </form>
+          </td>
           <td class="text-right">
+
             <button class="btn btn-primary" ng-click="editForm = !editForm"><span class="glyphicon glyphicon-pencil"></span></button>
              <button class="btn btn-danger" ng-click="deletePet(pet._id)"><span class="glyphicon glyphicon-trash"></span></button>
           </td>
